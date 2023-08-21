@@ -1,3 +1,55 @@
+import { Flex, Icon, useColorMode, Button, Text } from "@chakra-ui/react";
+import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
+import theme from "../utils/Chakra-theme";
+import { BsMoon, BsSun } from "react-icons/bs";
+
+export default function NavBar({ changeOpen, msg, isOpen }) {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const colorF =
+    colorMode === "light"
+      ? theme.colors.gradient.claro
+      : theme.colors.gradient.oscuro;
+
+  const colorB =
+    colorMode === "light"
+      ? theme.colors.gradient.redOrange
+      : theme.colors.gradient.pinkRose;
+
+  return (
+    <Flex
+      w={"100%"}
+      bg={colorF}
+      borderBottom={"1px solid #EBEBE6"}
+      h={"70px"}
+      p={"10px"}
+      alignItems={"center"}
+      gap={"20px"}
+    >
+      <Icon
+        cursor={"pointer"}
+        onClick={() => {
+          changeOpen();
+        }}
+        as={isOpen ? AiOutlineMenuUnfold : AiOutlineMenuFold}
+        fontSize={"20px"}
+      ></Icon>
+      <Text>{msg}</Text>
+      <Button
+        onClick={toggleColorMode}
+        bg={colorB}
+        _hover={{ bg: colorB }}
+        color="white"
+        ml={"auto"}
+      >
+        <Icon
+          as={colorMode === "light" ? BsMoon : BsSun}
+          fontSize={"20px"}
+        ></Icon>
+      </Button>
+    </Flex>
+  );
+}
+
 // import { Link as WouterLink } from 'wouter';
 // import { Box, Flex, Link, Spacer, useColorMode, Button, Image } from '@chakra-ui/react';
 
@@ -34,56 +86,3 @@
 // }
 
 // export default NavBar;
-
-import { useState } from "react";
-import { Flex, Icon, useColorMode, Button } from "@chakra-ui/react";
-import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
-import theme from '../utils/Chakra-theme'
-import { BsMoon, BsSun} from "react-icons/bs";
-
-export default function NavBar() {
-
-  const [open, setOpen] = useState(false);
-  const changeOpen = () => setOpen(!open);
-  const {colorMode, toggleColorMode} = useColorMode();
-  const gradientColors = {
-    light: theme.colors.gradient.redOrange,
-    dark: theme.colors.gradient.pinkRose,
-  };
-
-  return (
-    <Flex
-      w={"100%"}
-      bg={colorMode === 'light' ? theme.colors.gradient.claro : theme.colors.gradient.oscuro}
-      borderBottom={"1px solid #EBEBE6"}
-      h={"70px"}
-      p={"10px"}
-      alignItems={"center"}
-      gap={"20px"}
-    >
-      <Icon
-        cursor={"pointer"}
-        onClick={() => {
-          changeOpen();
-        }}
-        as={open ? AiOutlineMenuUnfold : AiOutlineMenuFold}
-        fontSize={"20px"}
-      ></Icon>
-      <Button
-        onClick={toggleColorMode}
-        bgGradient={gradientColors[colorMode]}
-        _hover={{ bgGradient: gradientColors[colorMode] }}
-        color="white"
-        ml={'auto'}
-      >
-        <Icon
-        as={colorMode==='light' ? BsMoon : BsSun}
-        fontSize={"20px"}
-        color={colorMode==='light' ? gradientColors.light: gradientColors.dark}
-      ></Icon>
-      </Button>
-      
-      
-    </Flex>
-  );
-}

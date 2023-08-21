@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import Page from "../components/container/Page";
 import { AppContext } from "../components/context/AppProvider";
-import HomeBody from "../components/pure/HomeBody";
+import Page from "../components/container/Page";
+import ContactBody from "../components/pure/ContactBody";
 
-export default function HomePage() {
+export default function ContactPage() {
   const { change, open } = useContext(AppContext);
   return (
     <Page
       changeOpen={change}
       isOpen={open}
-      componente={<HomeBody />}
-      msg={"Bienvenidos"}
+      componente={<ContactBody />}
+      msg={"Contact"}
     />
   );
 }

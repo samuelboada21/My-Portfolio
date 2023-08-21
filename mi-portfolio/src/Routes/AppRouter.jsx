@@ -1,23 +1,53 @@
 import { Redirect, Router, Switch, Route } from "wouter";
-import { ChakraProvider } from '@chakra-ui/react';
-import NavBar from "../components/NavBar";
+import { ChakraProvider } from "@chakra-ui/react";
 import HomePage from "../Pages/HomePage";
-import About from "../Pages/About";
-import Projects from "../Pages/Projects";
-import Contact from "../Pages/Contact";
+import AboutPage from "../Pages/AboutPage";
+import ProjectsPage from "../Pages/ProjectsPage";
+import ContactPage from "../Pages/ContactPage";
+import SideBar from "../components/SideBar";
+import ErrorPage from "../Pages/ErrorPage";
 
 export default function AppRouter() {
   return (
     <>
       <ChakraProvider>
         <Router>
-          <NavBar />
+          {/* <SideBar/> */}
           <Switch>
             <Redirect path="/home" to="/" />
-            <Route path="/" component={HomePage} />
-            <Route path="/about" component={About} />
-            <Route path="/projects" component={Projects} />
-            <Route path="/contact" component={Contact} />
+            <Route path="/">
+              {
+                <>
+                  <SideBar />
+                  <HomePage />
+                </>
+              }
+            </Route>
+            <Route path="/about">
+              {
+                <>
+                  <SideBar />
+                  <AboutPage />
+                </>
+              }{" "}
+            </Route>
+            <Route path="/projects">
+              {
+                <>
+                  <SideBar />
+                  <ProjectsPage />
+                </>
+              }{" "}
+            </Route>
+            <Route path="/contact">
+              {
+                <>
+                  <SideBar />
+                  <ContactPage />
+                </>
+              }{" "}
+            </Route>
+            <Route component={ErrorPage} />
           </Switch>
         </Router>
       </ChakraProvider>
