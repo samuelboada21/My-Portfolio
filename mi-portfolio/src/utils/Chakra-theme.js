@@ -5,6 +5,8 @@ const theme = extendTheme({
     gradient: {
       claro: 'linear-gradient(135deg, #FFC100, #FFEC00 )',
       oscuro: 'linear-gradient(135deg, #2D044E, #5F1E94)',
+      triclaro: 'linear-gradient(90deg, #FFC100 0%, #FFEC00 50%, #FFC100 100%)',
+      trioscuro: 'linear-gradient(90deg, #2D044E 0%, #5F1E94 50%, #2D044E 100%)',
       redOrange: 'linear-gradient(135deg, #FF6B6B, #FFA500)',
       orangeYellow: 'linear-gradient(135deg, #FFA500, #FFD700)',
       bluePurple: 'linear-gradient(135deg, #6A5ACD, #8A2BE2)',

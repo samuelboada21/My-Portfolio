@@ -23,7 +23,9 @@ export default function Page({ changeOpen, isOpen , componente, msg}) {
       />
       <Flex
         justifyContent={"center"}
-        pt={32}
+        // pt={32}
+        minHeight={"100vh"}
+        alignItems={"center"}
       >
       {componente}
       </Flex>
