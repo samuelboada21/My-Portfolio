@@ -2,6 +2,7 @@ import NavBar from "../NavBar";
 import {Flex} from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 
+// eslint-disable-next-line react/prop-types
 export default function Page({ changeOpen, isOpen , componente, msg}) {
 
   const { colorMode } = useColorMode();
